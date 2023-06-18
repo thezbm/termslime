@@ -83,13 +83,20 @@ def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, 
 def main():
 
     # set up the argument parser
-    parser = argparse.ArgumentParser(prog="termslime", description="Display an image in your terminal with true colors.")
+    parser = argparse.ArgumentParser(
+        prog="tslime",
+        description="Termslime displays images in your terminal with true colors. Project home page: https://github.com/garyzbm/termslime",
+    )
+
+    # add arguments
     parser.add_argument("path", type=str, help="path to an image file or a directory containing image files")
     parser.add_argument("-hl", "--heightLimit", type=int, default=500, help="maximum number of lines of blocks to display the image in the terminal")
     parser.add_argument("-wl", "--widthLimit", type=int, default=1000, help="maximum number of blocks per line to display the image in the terminal")
     parser.add_argument("-bp", "--beginPadding", type=int, default=1, help="number of empty lines before the image")
     parser.add_argument("-ep", "--endPadding", type=int, default=0, help="number of empty lines after the image")
     parser.add_argument("-lp", "--leftPadding", type=int, default=1, help="number of empty spaces at the beginning of each line of the image")
+
+    # parse the arguments
     args = parser.parse_args()
 
     # get path from the arguments

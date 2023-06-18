@@ -1,9 +1,15 @@
 [tool.poetry]
 name = "termslime"
-version = "0.1.0"
+version = "0.2.0"
 description = "Termslime displays images in your terminal with true colors."
+license = "MIT"
 authors = ["Gary Zhang <garyzhang2002@hotmail.com>"]
+maintainers = ["Gary Zhang <garyzhang2002@hotmail.com>"]
 readme = "README.md"
+homepage = "https://github.com/garyzbm/termslime"
+repository = "https://github.com/garyzbm/termslime"
+documentation = "https://github.com/garyzbm/termslime"
+keywords = ["cli", "image", "terminal"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -15,4 +21,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-termslime = "termslime.main:main"
+tslime = "termslime.main:main"

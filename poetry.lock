@@ -107,4 +107,4 @@ tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "pa
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.7"
-content-hash = "83a200e669fe4e4363e1cd99cabd13cf77fcb1f3fd6c0002f6b9911f2d994d6e"
+content-hash = "d668320871ce9bd932bfbe9c19c75c9e0e890e7f4874f3662996962fd8470d7e"
