@@ -79,27 +79,33 @@ def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, 
     # print the end padding
     print("\n" * endPadding, end="")
 
-# set up the argument parser
-parser = argparse.ArgumentParser(prog="termslime", description="Display an image in your terminal with true colors.")
-parser.add_argument("path", type=str, help="path to an image file or a directory containing image files")
-parser.add_argument("-hl", "--heightLimit", type=int, default=500, help="maximum number of lines of blocks to display the image in the terminal")
-parser.add_argument("-wl", "--widthLimit", type=int, default=1000, help="maximum number of blocks per line to display the image in the terminal")
-parser.add_argument("-bp", "--beginPadding", type=int, default=1, help="number of empty lines before the image")
-parser.add_argument("-ep", "--endPadding", type=int, default=0, help="number of empty lines after the image")
-parser.add_argument("-lp", "--leftPadding", type=int, default=1, help="number of empty spaces at the beginning of each line of the image")
-args = parser.parse_args()
+# the entry point of the cli
+def main():
 
-# get path from the arguments
-imgPath = args.path
-assert os.path.exists(imgPath), f"{imgPath} does not exist"
+    # set up the argument parser
+    parser = argparse.ArgumentParser(prog="termslime", description="Display an image in your terminal with true colors.")
+    parser.add_argument("path", type=str, help="path to an image file or a directory containing image files")
+    parser.add_argument("-hl", "--heightLimit", type=int, default=500, help="maximum number of lines of blocks to display the image in the terminal")
+    parser.add_argument("-wl", "--widthLimit", type=int, default=1000, help="maximum number of blocks per line to display the image in the terminal")
+    parser.add_argument("-bp", "--beginPadding", type=int, default=1, help="number of empty lines before the image")
+    parser.add_argument("-ep", "--endPadding", type=int, default=0, help="number of empty lines after the image")
+    parser.add_argument("-lp", "--leftPadding", type=int, default=1, help="number of empty spaces at the beginning of each line of the image")
+    args = parser.parse_args()
 
-# if imgPath is a path to a directory
-if os.path.isdir(imgPath):
+    # get path from the arguments
+    imgPath = args.path
+    assert os.path.exists(imgPath), f"{imgPath} does not exist"
 
-    # randomly choose an image from the directory and make imgPath the path to that image
-    imgList = [file for file in os.listdir(imgPath) if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith("bmp")]
-    assert len(imgList) > 0, f"{imgPath} does not contain any image files"
-    imgPath = os.path.join(imgPath, random.choice(imgList))
+    # if imgPath is a path to a directory
+    if os.path.isdir(imgPath):
 
-# call the display function and pass in the arguments
-display(imgPath, args.heightLimit, args.widthLimit, args.beginPadding, args.endPadding, args.leftPadding)
+        # randomly choose an image from the directory and make imgPath the path to that image
+        imgList = [file for file in os.listdir(imgPath) if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith("bmp")]
+        assert len(imgList) > 0, f"{imgPath} does not contain any image files"
+        imgPath = os.path.join(imgPath, random.choice(imgList))
+
+    # call the display function and pass in the arguments
+    display(imgPath, args.heightLimit, args.widthLimit, args.beginPadding, args.endPadding, args.leftPadding)
+
+if __name__ == "__main__":
+    main()
