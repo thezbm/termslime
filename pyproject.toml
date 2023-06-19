@@ -21,4 +21,4 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-tslime = "termslime.main:main"
+tslime = "termslime.__main__:__main"

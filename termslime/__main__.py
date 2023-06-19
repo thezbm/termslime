@@ -1,13 +1,13 @@
-import colorful as cf
-from PIL import Image
-import argparse
-import os
-import random
+import colorful as __cf
+from PIL import Image as __Image
+import argparse as __argparse
+import os as __os
+import random as __random
 
 # use true colors to display the image
-cf.use_true_colors()
+__cf.use_true_colors()
 
-def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, endPadding: int, leftPadding: int) -> None:
+def __display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, endPadding: int, leftPadding: int) -> None:
     """
     Display an image by printing half blocks with foreground and background colors to the terminal.
 
@@ -21,7 +21,7 @@ def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, 
     """
 
     # open the image and convert it to 256 colors and get its width and height
-    img = Image.open(imgPath).convert(mode="RGBA")
+    img = __Image.open(imgPath).convert(mode="RGBA")
     imgWidth, imgHeight = img.size[0], img.size[1]
 
     # calculate the resize ratio
@@ -29,7 +29,7 @@ def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, 
     resizeRatio = imgWidth / widthLimit if int(imgWidth / resizeRatio) > widthLimit else resizeRatio
 
     # compress the image to fit the width and height limits and make sure the compressed height is even
-    imgResized = img.resize((int(imgWidth / resizeRatio), int(imgHeight / resizeRatio / 2) * 2), Image.Resampling.NEAREST)
+    imgResized = img.resize((int(imgWidth / resizeRatio), int(imgHeight / resizeRatio / 2) * 2), __Image.Resampling.NEAREST)
 
     # print the begin padding
     print("\n" * beginPadding, end="")
@@ -57,20 +57,20 @@ def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, 
             # if only the upper pixel is transparent, print a lower half block with the lower pixel's color as the foreground color
             elif pixelUpper[-1] == 0:
                 p["fore"] = tuple(pixelLower[:-1])
-                with cf.with_palette(p) as c:
+                with __cf.with_palette(p) as c:
                     print(c.fore("▄"), end="")
 
             # if only the lower pixel is transparent, print a upper half block with the upper pixel's color as the foreground color
             elif pixelLower[-1] == 0:
                 p["fore"] = tuple(pixelUpper[:-1])
-                with cf.with_palette(p) as c:
+                with __cf.with_palette(p) as c:
                     print(c.fore("▀"), end="")
 
             # if either of the two pixels is transparent, print a lower half block with the corresponding pixel's color as the foreground and background colors
             else:
                 p["fore"] = tuple(pixelLower[:-1])
                 p["back"] = tuple(pixelUpper[:-1])
-                with cf.with_palette(p) as c:
+                with __cf.with_palette(p) as c:
                     print(c.fore_on_back("▄"), end="")
 
         # start a new row
@@ -79,13 +79,15 @@ def display(imgPath: str, heightLimit: int, widthLimit: int, beginPadding: int, 
     # print the end padding
     print("\n" * endPadding, end="")
 
-# the entry point of the cli
-def main():
+def __main():
+    """
+    Entry point.
+    """
 
     # set up the argument parser
-    parser = argparse.ArgumentParser(
+    parser = __argparse.ArgumentParser(
         prog="tslime",
-        description="Termslime displays images in your terminal with true colors. Project home page: https://github.com/garyzbm/termslime",
+        description="Termslime displays images in your terminal with true colors. Project home page: https://github.com/garyzbm/termslime.",
     )
 
     # add arguments
@@ -101,18 +103,18 @@ def main():
 
     # get path from the arguments
     imgPath = args.path
-    assert os.path.exists(imgPath), f"{imgPath} does not exist"
+    assert __os.path.exists(imgPath), f"{imgPath} does not exist"
 
     # if imgPath is a path to a directory
-    if os.path.isdir(imgPath):
+    if __os.path.isdir(imgPath):
 
         # randomly choose an image from the directory and make imgPath the path to that image
-        imgList = [file for file in os.listdir(imgPath) if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith("bmp")]
+        imgList = [file for file in __os.listdir(imgPath) if file.endswith(".png") or file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith("bmp")]
         assert len(imgList) > 0, f"{imgPath} does not contain any image files"
-        imgPath = os.path.join(imgPath, random.choice(imgList))
+        imgPath = __os.path.join(imgPath, __random.choice(imgList))
 
     # call the display function and pass in the arguments
-    display(imgPath, args.heightLimit, args.widthLimit, args.beginPadding, args.endPadding, args.leftPadding)
+    __display(imgPath, args.heightLimit, args.widthLimit, args.beginPadding, args.endPadding, args.leftPadding)
 
 if __name__ == "__main__":
-    main()
+    __main()
