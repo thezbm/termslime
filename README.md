@@ -14,6 +14,7 @@
 
 
 ## Contents
+
 + [Requirements](#requirements)
 + [Installation](#installation)
 + [Usage](#usage)
@@ -21,15 +22,18 @@
 
 
 ## Requirements
+
 + A terminal emulator with true color support.
 + Python >= 3.7.
 
 
 ## Installation
+
 Install with [pipx](https://pypa.github.io/pipx/) (recommended):
 ```shell
 pipx install termslime
 ```
+
 Or install with pip:
 ```shell
 pip install termslime
@@ -37,6 +41,7 @@ pip install termslime
 
 
 ## Usage
+
 ```
 usage: tslime [-h] [-hl HEIGHTLIMIT] [-wl WIDTHLIMIT] [-bp BEGINPADDING] [-ep ENDPADDING] [-lp LEFTPADDING] path
 
@@ -68,3 +73,7 @@ The following projects are crucial to the development of this project:
 + [colorful](https://github.com/timofurrer/colorful)
 + [pillow](https://python-pillow.org)
 + [poetry](https://python-poetry.org)
+
+
+---
+*<p align="center">This project is published under [MIT](LICENSE).<br>A [Gary Zhang](https://github.com/garyzbm) project.<br>- :tada: -</p>*
