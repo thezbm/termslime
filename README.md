@@ -7,7 +7,7 @@
 <p>
     <img src="https://img.shields.io/pypi/v/termslime.svg">
     <img src="https://img.shields.io/pypi/pyversions/termslime.svg">
-    <img src="https://img.shields.io/github/last-commit/garyzbm/termslime">
+    <img src="https://img.shields.io/github/last-commit/thezbm/termslime">
 </p>
 
 </div>
@@ -45,7 +45,7 @@ pip install termslime
 ```
 usage: tslime [-h] [-hl HEIGHTLIMIT] [-wl WIDTHLIMIT] [-bp BEGINPADDING] [-ep ENDPADDING] [-lp LEFTPADDING] path
 
-Termslime displays images in your terminal with true colors. Project home page: https://github.com/garyzbm/termslime
+Termslime displays images in your terminal with true colors. Project home page: https://github.com/thezbm/termslime
 
 positional arguments:
   path                  path to an image file or a directory containing image files
@@ -76,4 +76,4 @@ The following projects are crucial to the development of this project:
 
 
 ---
-*<p align="center">This project is published under [MIT](LICENSE).<br>A [Gary Zhang](https://github.com/garyzbm) project.<br>- :tada: -</p>*
+*<p align="center">This project is published under [MIT](LICENSE).<br>A [Beiming Zhang](https://github.com/thezbm) project.<br>- :tada: -</p>*
